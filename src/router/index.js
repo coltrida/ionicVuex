@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import Users from '../pages/Users.vue';
+import AddOrUpdateUser from '../pages/AddOrUpdateUser.vue';
 
 
 const routes = [
@@ -10,6 +11,10 @@ const routes = [
   {
     path: '/users',
     component: Users
+  },
+  {
+    path: '/add-or-update/:id',
+    component: AddOrUpdateUser
   }
 ]
 

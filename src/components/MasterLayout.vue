@@ -24,7 +24,8 @@ import {
     IonHeader,
     IonContent,
     IonToolbar,
-    IonTitle
+    IonTitle,
+    IonFooter
 } from '@ionic/vue';
 export default {
     components: {
@@ -32,7 +33,8 @@ export default {
         IonHeader,
         IonContent,
         IonToolbar,
-        IonTitle
+        IonTitle,
+        IonFooter
     },
     props: ["pageTitle"]
 };
