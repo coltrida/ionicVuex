@@ -11,9 +11,7 @@
         </ion-content>
 
         <ion-footer>
-            <ion-toolbar>
-            <ion-title>Footer</ion-title>
-            </ion-toolbar>
+            <slot name="footerdata"></slot>
         </ion-footer>
     </ion-page>
 </template>

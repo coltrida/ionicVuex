@@ -12,16 +12,24 @@
             </ion-item>
         </ion-card>
     </div>
+    <template v-slot:footerdata>
+        <ion-fab vertical="bottom" horizontal="end">
+            <ion-fab-button routerLink="/add-or-update/0">
+                <ion-icon :icon="add"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+    </template>
 </master-layout>
     
 </template>
 
 <script>
-import {IonButton, IonCard, IonCardContent, IonCardTitle, IonItem, IonLabel} from '@ionic/vue';
+import {IonButton, IonCard, IonCardContent, IonCardTitle, IonItem, IonLabel, IonFab, IonFabButton, IonIcon} from '@ionic/vue';
+import { add } from 'ionicons/icons'
 import { mapActions, mapGetters } from 'vuex';
 export default {
     components: {
-        IonButton, IonCard, IonCardContent, IonCardTitle, IonItem, IonLabel
+        IonButton, IonCard, IonCardContent, IonCardTitle, IonItem, IonLabel, IonFab, IonFabButton, IonIcon
     },
 
     computed:{
@@ -37,6 +45,12 @@ export default {
 
         showUsers(){
             this.fetchUsers()
+        }
+    },
+
+    data(){
+        return {
+            add,
         }
     }
 }

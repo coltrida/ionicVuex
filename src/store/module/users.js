@@ -26,6 +26,7 @@ const mutations = {
         state.users = payload;
     },
     saveuser(state, payload){
+        payload.id = (state.users.length + 1);
         state.users.unshift(payload);
     }
 };
