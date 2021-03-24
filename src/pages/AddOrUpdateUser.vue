@@ -29,21 +29,6 @@ export default {
         }
     },
 
-    mounted(){
-        if(this.routeId === 0){
-            this.pageTitle = 'Add New User';
-            this.btnText = "Add";
-            this.userInfo = {
-                id: 0,
-                name: '',
-                email: ''
-            }
-        } else {
-            this.pageTitle = 'Update User';
-            this.btnText = "Update";
-        }
-    },
-
     methods:{
         ...mapActions('users', {
             saveuser: 'saveuser'
@@ -54,6 +39,20 @@ export default {
                 this.saveuser(this.userInfo);
                 this.$router.push("/users");
             }
+        }
+    },
+    ionViewDidEnter(){
+        if(this.routeId === 0){
+            this.pageTitle = 'Add New User';
+            this.btnText = "Add";
+            this.userInfo = {
+                id: 0,
+                name: "",
+                email: ""
+            }
+        } else {
+            this.pageTitle = 'Update User';
+            this.btnText = "Update";
         }
     }
 }
