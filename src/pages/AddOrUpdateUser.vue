@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import { IonCard, IonItem, IonLabel, IonInput, IonButton } from '@ionic/vue';
 export default {
     components: { IonCard, IonItem, IonLabel, IonInput, IonButton  },
@@ -29,16 +29,25 @@ export default {
         }
     },
 
+    computed:{
+        ...mapGetters('users', {
+            userbyId: 'userbyId'
+        }),
+    },
+
     methods:{
         ...mapActions('users', {
-            saveuser: 'saveuser'
+            saveuser: 'saveuser',
+            updateuser: 'updateuser'
         }),
 
         saveorupdateusers(){
             if(this.routeId == 0){
                 this.saveuser(this.userInfo);
-                this.$router.push("/users");
+            } else {
+                this.updateuser(this.userInfo);
             }
+            this.$router.push("/users");
         }
     },
     ionViewDidEnter(){
@@ -53,6 +62,7 @@ export default {
         } else {
             this.pageTitle = 'Update User';
             this.btnText = "Update";
+            this.userInfo = this.userbyId(this.routeId);
         }
     }
 }

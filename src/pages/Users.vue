@@ -10,6 +10,9 @@
                 <ion-label>Email</ion-label>
                 <ion-label>{{user.email}}</ion-label>
             </ion-item>
+            <ion-item>
+                <ion-icon @click="edit(user.id)" :icon="create"></ion-icon>
+            </ion-item>
         </ion-card>
     </div>
     <template v-slot:footerdata>
@@ -25,7 +28,7 @@
 
 <script>
 import {IonButton, IonCard, IonCardContent, IonCardTitle, IonItem, IonLabel, IonFab, IonFabButton, IonIcon} from '@ionic/vue';
-import { add } from 'ionicons/icons'
+import { add, create } from 'ionicons/icons'
 import { mapActions, mapGetters } from 'vuex';
 export default {
     components: {
@@ -45,12 +48,17 @@ export default {
 
         showUsers(){
             this.fetchUsers()
+        },
+
+        edit(id){
+            this.$router.push(`/add-or-update/${id}`)
         }
     },
 
     data(){
         return {
             add,
+            create
         }
     }
 }
