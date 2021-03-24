@@ -29,7 +29,12 @@ const actions = {
     async updateuser({commit}, payload){
         /* qui si scrive la parte di axios per il salvataggio dei dati */
         commit('updateuser', payload);
-    }
+    },
+
+    async deleteUser({commit}, id){
+        /* qui si scrive la parte di axios per la cancellazione dei dati */
+        commit('deleteUser', id);
+    },
 };
 
 const mutations = {
@@ -45,7 +50,11 @@ const mutations = {
     updateuser(state, payload){
         state.users = state.users.filter(u => u.id !== payload.id);
         state.users.unshift(payload);
-    }
+    },
+
+    deleteUser(state, id){
+        state.users = state.users.filter(u => u.id !== id);
+    },    
 };
 
 export default{

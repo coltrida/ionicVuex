@@ -12,6 +12,7 @@
             </ion-item>
             <ion-item>
                 <ion-icon @click="edit(user.id)" :icon="create"></ion-icon>
+                <ion-icon @click="deleteUser(user.id)" :icon="trash"></ion-icon>
             </ion-item>
         </ion-card>
     </div>
@@ -28,7 +29,7 @@
 
 <script>
 import {IonButton, IonCard, IonCardContent, IonCardTitle, IonItem, IonLabel, IonFab, IonFabButton, IonIcon} from '@ionic/vue';
-import { add, create } from 'ionicons/icons'
+import { add, create, trash } from 'ionicons/icons'
 import { mapActions, mapGetters } from 'vuex';
 export default {
     components: {
@@ -43,7 +44,8 @@ export default {
 
     methods:{
         ...mapActions('users', {
-            fetchUsers:'fetchUsers'
+            fetchUsers:'fetchUsers',
+            deleteUserAction: 'deleteUser'
         }),
 
         showUsers(){
@@ -52,13 +54,18 @@ export default {
 
         edit(id){
             this.$router.push(`/add-or-update/${id}`)
+        },
+
+        deleteUser(id){
+            this.deleteUserAction(id);
         }
     },
 
     data(){
         return {
             add,
-            create
+            create,
+            trash
         }
     }
 }
